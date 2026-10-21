@@ -17,7 +17,7 @@ export default function Leaderboard() {
     <>
       <h1>🏆 Team Leaderboard</h1>
       <p className="subtitle">Oct 30 – Nov 29, 2026 · Mondays double · Nov 29 triple finale</p>
-      <img src="/app_image.png" alt="Fall Into Fitness Team Step Challenge" className="hero-image" />
+      <img src="/app_image.jpg" alt="Fall Into Fitness Team Step Challenge" className="hero-image" />
 
       {error && <div className="msg err">{error}</div>}
       {!standings && !error && <p className="subtitle">Loading…</p>}
