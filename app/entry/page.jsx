@@ -7,7 +7,6 @@ export default function EntryPage() {
   const [name, setName] = useState(MEMBERS[0]);
   const [day, setDay] = useState(END);
   const [steps, setSteps] = useState('');
-  const [pin, setPin] = useState('');
   const [msg, setMsg] = useState(null);
   const [busy, setBusy] = useState(false);
 
@@ -19,7 +18,7 @@ export default function EntryPage() {
     const res = await fetch('/api/steps', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, day, steps: Number(steps), pin }),
+      body: JSON.stringify({ name, day, steps: Number(steps) }),
     });
 
     const data = await res.json();
@@ -70,16 +69,6 @@ export default function EntryPage() {
           required
         />
 
-        <label htmlFor="pin">Shared PIN</label>
-        <input
-          id="pin"
-          type="password"
-          inputMode="numeric"
-          placeholder="Group PIN"
-          value={pin}
-          onChange={(e) => setPin(e.target.value)}
-          required
-        />
         <p className="hint">Re-entering a date overwrites the previous value for that day.</p>
 
         <button type="submit" disabled={busy}>

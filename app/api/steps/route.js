@@ -2,11 +2,7 @@ import { sql } from '@vercel/postgres';
 import { isWithinChallenge, START, END } from '@/lib/challenge';
 
 export async function POST(request) {
-  const { name, day, steps, pin } = await request.json();
-
-  if (pin !== process.env.APP_PIN) {
-    return Response.json({ error: 'Invalid PIN.' }, { status: 401 });
-  }
+  const { name, day, steps } = await request.json();
 
   const stepCount = Number(steps);
   if (!Number.isInteger(stepCount) || stepCount < 0) {

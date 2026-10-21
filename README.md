@@ -30,7 +30,7 @@ Scoring lives in [lib/scoring.js](lib/scoring.js); all dates/teams are in [lib/c
 
 - `/` — team leaderboard (totals, sorted)
 - `/matrix` — daily step matrix (users × dates) with steps + point equivalent and Monday/finale multiplier badges
-- `/entry` — PIN-protected form to log/overwrite a day's steps
+- `/entry` — form to log/overwrite a day's steps
 
 ## Project structure
 
@@ -65,15 +65,11 @@ Requires **Node.js 20.6+** (for the `--env-file` flag) and a Vercel project with
    vercel link
    vercel env pull .env.local
    ```
-3. Set the shared PIN in `.env.local`:
-   ```
-   APP_PIN=your-pin-here
-   ```
-4. Initialize the database (creates tables + seeds teams/friends):
+3. Initialize the database (creates tables + seeds teams/friends):
    ```bash
    npm run db:init
    ```
-5. Start the dev server:
+4. Start the dev server:
    ```bash
    npm run dev
    ```
@@ -83,19 +79,16 @@ Requires **Node.js 20.6+** (for the `--env-file` flag) and a Vercel project with
 
 1. Push this repo to GitHub and import it in Vercel.
 2. Add a **Postgres** store (Storage → Create → Postgres) and attach it to the project. The `POSTGRES_URL` env vars are injected automatically.
-3. Add the **`APP_PIN`** environment variable (Settings → Environment Variables) — it is **not** committed (`.env*.local` is gitignored).
-4. Run the schema once in the Vercel Postgres **Query** console (paste [db/schema.sql](db/schema.sql)).
-5. Deploy.
+3. Run the schema once in the Vercel Postgres **Query** console (paste [db/schema.sql](db/schema.sql)).
+4. Deploy.
 
 ## Environment variables
 
 | Variable | Source | Purpose |
 | --- | --- | --- |
 | `POSTGRES_URL` (+ related) | Vercel Postgres | Database connection |
-| `APP_PIN` | You set it | Shared PIN required to submit steps |
 
 ## Notes
 
-- The leaderboard and matrix are public (read-only); submitting steps requires the shared PIN.
 - Re-submitting a date overwrites that day's value instead of duplicating it.
 - Fitness-tracker auto-sync was intentionally dropped: iPhone (Apple Health) and Samsung (Health Connect) keep step data on-device with no server API, so manual entry is the reliable path for a web app.

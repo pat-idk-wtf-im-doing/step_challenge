@@ -180,6 +180,49 @@ button:disabled {
   margin-top: 6px;
 }
 
+.rules-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.rules-card h2 {
+  font-size: 1.15rem;
+  margin: 0 0 8px;
+}
+
+.rules-card p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.rules-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.rules-table th,
+.rules-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.rules-table thead th {
+  background: var(--panel-2);
+  border-radius: 8px 8px 0 0;
+}
+
+.rules-table td:last-child,
+.rules-table th:last-child {
+  text-align: right;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
 .mode-toggle {
   display: flex;
   gap: 8px;
