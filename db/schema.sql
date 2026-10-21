@@ -24,7 +24,7 @@ insert into users (name, team_id) values
   ('Patrick',     (select id from teams where name = 'Team A')),
   ('Scott',       (select id from teams where name = 'Team A')),
   ('Chow',        (select id from teams where name = 'Team A')),
-  ('Jessica',     (select id from teams where name = 'Team B')),
+  ('Jess',     (select id from teams where name = 'Team B')),
   ('Big Lisa',    (select id from teams where name = 'Team B')),
   ('Lina',        (select id from teams where name = 'Team B')),
   ('Little Lisa', (select id from teams where name = 'Team C')),
