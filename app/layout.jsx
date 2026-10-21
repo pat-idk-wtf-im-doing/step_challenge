@@ -3,10 +3,6 @@ import './globals.css';
 export const metadata = {
   title: 'FML STEPS — Team Step Challenge',
   description: 'Track daily steps and team points for the Fall Into Fitness challenge.',
-  icons: {
-    icon: '/app_image.jpg',
-    apple: '/app_image.jpg',
-  },
   appleWebApp: {
     capable: true,
     title: 'FML STEPS',
