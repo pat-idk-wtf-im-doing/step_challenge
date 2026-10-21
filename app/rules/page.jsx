@@ -1,6 +1,29 @@
+import { scoringRows, minScoringSteps } from '@/lib/scoring';
+
 export const metadata = {
   title: 'Rules — FML STEPS',
 };
+
+function ScoreTable({ pointsHeader, multiplier }) {
+  return (
+    <table className="rules-table">
+      <thead>
+        <tr>
+          <th>Daily steps</th>
+          <th>{pointsHeader}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {scoringRows(multiplier).map((row) => (
+          <tr key={row.label}>
+            <td>{row.label}</td>
+            <td>{row.points}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
 
 export default function RulesPage() {
   return (
@@ -19,59 +42,23 @@ export default function RulesPage() {
 
       <div className="rules-card">
         <h2>📊 Standard daily scoring</h2>
-        <table className="rules-table">
-          <thead>
-            <tr>
-              <th>Daily steps</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Under 10,000</td><td>0</td></tr>
-            <tr><td>10,000 – 14,999</td><td>1</td></tr>
-            <tr><td>15,000 – 19,999</td><td>2</td></tr>
-            <tr><td>20,000+</td><td>3</td></tr>
-          </tbody>
-        </table>
-        <p className="hint">10,000 steps is the minimum to score — more steps, more points.</p>
+        <ScoreTable pointsHeader="Points" multiplier={1} />
+        <p className="hint">
+          {minScoringSteps().toLocaleString()} steps is the minimum to score — more steps, more
+          points.
+        </p>
       </div>
 
       <div className="rules-card">
         <h2>🔥 Monday double points</h2>
         <p className="subtitle">Nov 2, 9, 16, 23 — every point counts double.</p>
-        <table className="rules-table">
-          <thead>
-            <tr>
-              <th>Daily steps</th>
-              <th>Double points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Under 10,000</td><td>0</td></tr>
-            <tr><td>10,000 – 14,999</td><td>2</td></tr>
-            <tr><td>15,000 – 19,999</td><td>4</td></tr>
-            <tr><td>20,000+</td><td>6</td></tr>
-          </tbody>
-        </table>
+        <ScoreTable pointsHeader="Double points" multiplier={2} />
       </div>
 
       <div className="rules-card">
         <h2>🏁 Grand final — November 29</h2>
         <p className="subtitle">The last day is worth triple points.</p>
-        <table className="rules-table">
-          <thead>
-            <tr>
-              <th>Daily steps</th>
-              <th>Triple points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Under 10,000</td><td>0</td></tr>
-            <tr><td>10,000 – 14,999</td><td>3</td></tr>
-            <tr><td>15,000 – 19,999</td><td>6</td></tr>
-            <tr><td>20,000+</td><td>9</td></tr>
-          </tbody>
-        </table>
+        <ScoreTable pointsHeader="Triple points" multiplier={3} />
       </div>
 
       <div className="rules-card">
