@@ -2,7 +2,7 @@ import './globals.css';
 
 export const metadata = {
   title: 'FML STEPS — Team Step Challenge',
-  description: 'Track daily steps and team points for the Fall Into Fitness challenge.',
+  description: 'Track daily steps and team points for the Step challenge.',
   appleWebApp: {
     capable: true,
     title: 'FML STEPS',
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <header className="site-header">
-          <a href="/" className="brand">🍂 Fall Into Fitness</a>
+          <a href="/" className="brand">🍗 I love KFC</a>
           <nav>
             <a href="/">Leaderboard</a>
             <a href="/matrix">Matrix</a>
