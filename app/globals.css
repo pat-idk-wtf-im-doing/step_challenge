@@ -67,6 +67,16 @@ h1 {
   margin: 0 0 20px;
 }
 
+.hero-image {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 0 auto 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
 .team-card {
   background: var(--panel);
   border: 1px solid var(--border);
