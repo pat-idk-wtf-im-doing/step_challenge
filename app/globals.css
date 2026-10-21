@@ -1,0 +1,309 @@
+:root {
+  --bg: #0b1020;
+  --panel: #141b32;
+  --panel-2: #1c2745;
+  --text: #e8ecff;
+  --muted: #9aa6cc;
+  --accent: #7c5cff;
+  --accent-2: #19c3b2;
+  --border: #273255;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 18px;
+  background: linear-gradient(90deg, #1a1040, #10233f);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-header nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 16px;
+  font-weight: 600;
+}
+
+.site-header nav a:hover {
+  color: var(--text);
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 10px 0 4px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+.team-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.team-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.team-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.team-points {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent-2);
+}
+
+.rank {
+  display: inline-block;
+  min-width: 26px;
+  margin-right: 8px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.member-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--panel-2);
+  margin-top: 6px;
+}
+
+.member-meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+form {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.msg {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.msg.ok {
+  background: rgba(25, 195, 178, 0.15);
+  color: var(--accent-2);
+}
+
+.msg.err {
+  background: rgba(255, 90, 120, 0.15);
+  color: #ff8aa0;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.toggle {
+  width: auto;
+  margin-top: 0;
+  padding: 8px 14px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.toggle.active {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.matrix-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.matrix {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.matrix th,
+.matrix td {
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.matrix thead th {
+  background: var(--panel-2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: var(--panel);
+  text-align: left;
+}
+
+.corner {
+  z-index: 4;
+}
+
+.name-cell {
+  font-weight: 700;
+}
+
+.team-tag {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.day-head .day-label {
+  display: block;
+}
+
+.mult-head-2 {
+  background: rgba(124, 92, 255, 0.22) !important;
+}
+
+.mult-head-3 {
+  background: rgba(25, 195, 178, 0.28) !important;
+}
+
+.mult {
+  display: inline-block;
+  margin-top: 3px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.mult-2 {
+  background: var(--accent);
+  color: white;
+}
+
+.mult-3 {
+  background: var(--accent-2);
+  color: #04221f;
+}
+
+.cell-steps {
+  font-weight: 700;
+}
+
+.cell-points {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.cell-points.has-points {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.matrix td.empty {
+  color: #52608f;
+}
+
+.total-head,
+.total-cell {
+  background: var(--panel-2);
+  font-weight: 800;
+}
+
+.total-cell .cell-points {
+  color: var(--accent-2);
+}
