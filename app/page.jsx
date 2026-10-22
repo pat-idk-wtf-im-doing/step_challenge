@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { funDistance } from '@/lib/distance';
 
 export default function Leaderboard() {
   const [standings, setStandings] = useState(null);
@@ -32,6 +33,7 @@ export default function Leaderboard() {
               </span>
               <span className="team-points">{team.points} pts</span>
             </div>
+            <div className="team-distance">🦵 {funDistance(team.steps)}</div>
             {team.members.map((m) => (
               <div className="member-row" key={m.name}>
                 <span>{m.name}</span>

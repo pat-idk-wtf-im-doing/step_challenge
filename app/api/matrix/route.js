@@ -57,5 +57,22 @@ export async function GET() {
     return { name, team: teamByUser.get(name) ?? null, cells, totalSteps, totalPoints };
   });
 
+  // Crown the top scorer in each day column (tiebreak: most steps).
+  days.forEach((_, i) => {
+    let best = null;
+    for (const u of users) {
+      const c = u.cells[i];
+      if (c.points === null || c.points <= 0) continue;
+      if (
+        !best ||
+        c.points > best.points ||
+        (c.points === best.points && c.steps > best.steps)
+      ) {
+        best = c;
+      }
+    }
+    if (best) best.mvp = true;
+  });
+
   return Response.json({ days, users });
 }

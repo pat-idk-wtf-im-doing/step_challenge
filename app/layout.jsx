@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
           <nav>
             <a href="/">Leaderboard</a>
             <a href="/matrix">Matrix</a>
+            <a href="/feed">Trash Talk</a>
             <a href="/entry">Enter Steps</a>
             <a href="/rules">Rules</a>
           </nav>

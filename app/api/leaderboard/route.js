@@ -20,20 +20,22 @@ export async function GET() {
 
   for (const row of rows) {
     if (!teams.has(row.team_name)) {
-      teams.set(row.team_name, { team: row.team_name, points: 0, members: new Map() });
+      teams.set(row.team_name, { team: row.team_name, points: 0, steps: 0, members: new Map() });
     }
     const team = teams.get(row.team_name);
 
     if (!team.members.has(row.user_name)) {
-      team.members.set(row.user_name, { name: row.user_name, points: 0, days: 0 });
+      team.members.set(row.user_name, { name: row.user_name, points: 0, steps: 0, days: 0 });
     }
     const member = team.members.get(row.user_name);
 
     if (row.day !== null && row.steps !== null) {
       const pts = pointsForDay(row.steps, row.day);
       member.points += pts;
+      member.steps += row.steps;
       member.days += 1;
       team.points += pts;
+      team.steps += row.steps;
     }
   }
 
@@ -41,6 +43,7 @@ export async function GET() {
     .map((team) => ({
       team: team.team,
       points: team.points,
+      steps: team.steps,
       members: [...team.members.values()].sort((a, b) => b.points - a.points),
     }))
     .sort((a, b) => b.points - a.points);

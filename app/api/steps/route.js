@@ -22,11 +22,20 @@ export async function POST(request) {
   }
   const userId = rows[0].id;
 
+  // Previous best across all other days (re-entering a day overwrites it).
+  const { rows: bestRows } = await sql`
+    select coalesce(max(steps), 0) as best
+    from daily_steps
+    where user_id = ${userId} and day <> ${day}
+  `;
+  const prevBest = bestRows[0].best;
+
   await sql`
     insert into daily_steps (user_id, day, steps)
     values (${userId}, ${day}, ${stepCount})
-    on conflict (user_id, day) do update set steps = excluded.steps
+    on conflict (user_id, day) do update set steps = excluded.steps, created_at = now()
   `;
 
-  return Response.json({ ok: true });
+  const isPersonalBest = stepCount > 0 && stepCount > prevBest;
+  return Response.json({ ok: true, isPersonalBest, prevBest });
 }

@@ -10,12 +10,16 @@ create table if not exists users (
 );
 
 create table if not exists daily_steps (
-  id      serial primary key,
-  user_id integer not null references users(id),
-  day     date not null,
-  steps   integer not null check (steps >= 0),
+  id         serial primary key,
+  user_id    integer not null references users(id),
+  day        date not null,
+  steps      integer not null check (steps >= 0),
+  created_at timestamptz not null default now(),
   unique (user_id, day)
 );
+
+-- Backfill for databases created before created_at existed.
+alter table daily_steps add column if not exists created_at timestamptz not null default now();
 
 insert into teams (name) values ('Team A'), ('Team B'), ('Team C')
   on conflict (name) do nothing;

@@ -360,3 +360,35 @@ button:disabled {
 .total-cell .cell-points {
   color: var(--accent-2);
 }
+
+.mvp-crown {
+  font-size: 0.9rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.team-distance {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: -4px 0 10px;
+}
+
+.feed-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.feed-emoji {
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.feed-text {
+  line-height: 1.45;
+}

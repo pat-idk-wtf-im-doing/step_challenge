@@ -75,6 +75,7 @@ export default function MatrixPage() {
                         '–'
                       ) : (
                         <>
+                          {c.mvp && <div className="mvp-crown" title="Daily MVP">👑</div>}
                           {mode !== 'points' && (
                             <div className="cell-steps">{c.steps.toLocaleString()}</div>
                           )}
