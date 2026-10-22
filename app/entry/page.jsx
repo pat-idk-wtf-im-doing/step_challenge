@@ -2,6 +2,14 @@
 
 import { useState } from 'react';
 import { MEMBERS, START, END } from '@/lib/challenge';
+import { basePoints } from '@/lib/scoring';
+
+const QUIPS = {
+  0: 'TF WALK MORE YOU LAZY SLOB!!',
+  1: 'you arite??',
+  2: 'ooo you walking lots',
+  3: 'OOF those legs must be jelly',
+};
 
 export default function EntryPage() {
   const [name, setName] = useState(MEMBERS[0]);
@@ -23,7 +31,8 @@ export default function EntryPage() {
 
     const data = await res.json();
     if (res.ok) {
-      setMsg({ type: 'ok', text: `Saved ${steps} steps for ${name} on ${day}.` });
+      const quip = QUIPS[basePoints(Number(steps))];
+      setMsg({ type: 'ok', text: `Saved ${steps} steps for ${name} on ${day}, ${quip}` });
       setSteps('');
     } else {
       setMsg({ type: 'err', text: data.error || 'Something went wrong.' });
