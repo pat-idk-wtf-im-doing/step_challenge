@@ -1,5 +1,6 @@
 import { sql } from '@vercel/postgres';
 import { isWithinChallenge, START, END } from '@/lib/challenge';
+import { quipFor } from '@/lib/ai-quip';
 
 export async function POST(request) {
   const { name, day, steps } = await request.json();
@@ -37,5 +38,6 @@ export async function POST(request) {
   `;
 
   const isPersonalBest = stepCount > 0 && stepCount > prevBest;
-  return Response.json({ ok: true, isPersonalBest, prevBest });
+  const quip = await quipFor(name, stepCount, day);
+  return Response.json({ ok: true, isPersonalBest, prevBest, quip });
 }
