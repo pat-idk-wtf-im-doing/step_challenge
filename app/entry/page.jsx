@@ -31,7 +31,7 @@ export default function EntryPage() {
 
     const data = await res.json();
     if (res.ok) {
-      const quip = data.quip || QUIPS[basePoints(Number(steps))];
+      const quip = QUIPS[basePoints(Number(steps))];
       let text = `Saved ${steps} steps for ${name} on ${day}, ${quip}`;
       if (data.isPersonalBest) {
         text += ` 🔥🏅 NEW PERSONAL BEST — smashed your old ${data.prevBest.toLocaleString()}! 🚀`;
