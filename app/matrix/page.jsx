@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import RaceTrack from './RaceTrack';
 
 const MODES = [
   { key: 'both', label: 'Steps + Points' },
@@ -102,6 +103,8 @@ export default function MatrixPage() {
           </table>
         </div>
       )}
+
+      {data && <RaceTrack data={data} />}
     </>
   );
 }
