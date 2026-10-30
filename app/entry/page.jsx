@@ -5,7 +5,7 @@ import { MEMBERS, START, END } from '@/lib/challenge';
 import { basePoints } from '@/lib/scoring';
 
 const QUIPS = {
-  0: 'TF WALK MORE YOU LAZY SLOB!!',
+  0: 'TF WALK YOUR ASS YOU LAZY FK!!',
   1: 'you arite??',
   2: 'ooo you walking lots',
   3: 'OOF those legs must be jelly',
