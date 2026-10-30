@@ -8,7 +8,7 @@ const QUIPS = {
   0: 'GET OFF YOUR FUCKING ASS AND MOVE YOU SLOB!!',
   1: 'you arite??',
   2: 'ooo you walking lots',
-  3: 'OOF those legs must be jelly',
+  3: 'OOF, max points hit! Go put those jelly legs up, you earned it. 📈🛋️',
 };
 
 export default function EntryPage() {
