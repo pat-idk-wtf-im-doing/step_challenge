@@ -5,7 +5,7 @@ import { MEMBERS, START, END } from '@/lib/challenge';
 import { basePoints } from '@/lib/scoring';
 
 const QUIPS = {
-  0: 'GET OFF YOUR FUCKING ASS AND MOVE YOU SLOB!!',
+  0: 'GET OFF YOUR FUCKING ASS AND MOVE YOU FAT FUCK!!',
   1: 'you arite??',
   2: 'ooo you walking lots',
   3: 'OOF, max points hit! Go put those jelly legs up, you earned it. 📈🛋️',
