@@ -1,5 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { isWithinChallenge, START, END } from '@/lib/challenge';
+import { isWithinChallenge, REST_DAYS, START, END } from '@/lib/challenge';
 
 export async function POST(request) {
   const { name, day, steps } = await request.json();
@@ -12,6 +12,13 @@ export async function POST(request) {
   if (!isWithinChallenge(day)) {
     return Response.json(
       { error: `Date must be between ${START} and ${END}.` },
+      { status: 400 }
+    );
+  }
+
+  if (REST_DAYS.has(day)) {
+    return Response.json(
+      { error: 'That day is a rest day — no steps can be logged.' },
       { status: 400 }
     );
   }

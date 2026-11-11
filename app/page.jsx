@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { REST_DAYS, restDaysLabel } from '@/lib/challenge';
 import { funDistance } from '@/lib/distance';
 
 export default function Leaderboard() {
@@ -17,7 +18,11 @@ export default function Leaderboard() {
   return (
     <>
       <h1>🏆 Team Leaderboard</h1>
-      <p className="subtitle">Oct 30 – Nov 29, 2026 · Mondays double · Nov 29 triple finale</p>
+      <p className="subtitle">
+        Oct 30 – Nov 29, 2026 · Mondays double ·{' '}
+        {REST_DAYS.size > 0 && `${restDaysLabel()} rest days · `}
+        Nov 29 triple finale
+      </p>
       <img src="/app_image.jpg" alt="Fall Into Fitness Team Step Challenge" className="hero-image" />
 
       {error && <div className="msg err">{error}</div>}

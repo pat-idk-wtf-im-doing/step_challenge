@@ -10,6 +10,7 @@ const MODES = [
 ];
 
 function multiplierBadge(m) {
+  if (m === 0) return <span className="mult mult-0">😴 REST DAY</span>;
   if (m === 3) return <span className="mult mult-3">3×</span>;
   if (m === 2) return <span className="mult mult-2">2×</span>;
   return null;
@@ -70,25 +71,29 @@ export default function MatrixPage() {
                     <div>{u.name}</div>
                     <div className="team-tag">{u.team}</div>
                   </th>
-                  {u.cells.map((c) => (
-                    <td key={c.date} className={c.steps === null ? 'empty' : ''}>
-                      {c.steps === null ? (
-                        '–'
-                      ) : (
-                        <>
-                          {c.mvp && <div className="mvp-crown" title="Daily MVP">👑</div>}
-                          {mode !== 'points' && (
-                            <div className="cell-steps">{c.steps.toLocaleString()}</div>
-                          )}
-                          {mode !== 'steps' && (
-                            <div className={`cell-points ${c.points > 0 ? 'has-points' : ''}`}>
-                              {c.points} pt{c.points === 1 ? '' : 's'}
-                            </div>
-                          )}
-                        </>
-                      )}
-                    </td>
-                  ))}
+                  {u.cells.map((c, i) =>
+                    data.days[i].multiplier === 0 ? (
+                      <td key={c.date} className="rest">💤</td>
+                    ) : (
+                      <td key={c.date} className={c.steps === null ? 'empty' : ''}>
+                        {c.steps === null ? (
+                          '–'
+                        ) : (
+                          <>
+                            {c.mvp && <div className="mvp-crown" title="Daily MVP">👑</div>}
+                            {mode !== 'points' && (
+                              <div className="cell-steps">{c.steps.toLocaleString()}</div>
+                            )}
+                            {mode !== 'steps' && (
+                              <div className={`cell-points ${c.points > 0 ? 'has-points' : ''}`}>
+                                {c.points} pt{c.points === 1 ? '' : 's'}
+                              </div>
+                            )}
+                          </>
+                        )}
+                      </td>
+                    )
+                  )}
                   <td className="total-cell">
                     {mode !== 'points' && (
                       <div className="cell-steps">{u.totalSteps.toLocaleString()}</div>

@@ -1,3 +1,4 @@
+import { REST_DAYS, restDaysLabel } from '@/lib/challenge';
 import { scoringRows, minScoringSteps } from '@/lib/scoring';
 
 export const metadata = {
@@ -54,6 +55,13 @@ export default function RulesPage() {
         <p className="subtitle">Nov 2, 9, 16, 23 — every point counts double.</p>
         <ScoreTable pointsHeader="Double points" multiplier={2} />
       </div>
+
+      {REST_DAYS.size > 0 && (
+        <div className="rules-card">
+          <h2>😴 Rest days — {restDaysLabel()}</h2>
+          <p className="subtitle">No steps can be logged and no points are scored.</p>
+        </div>
+      )}
 
       <div className="rules-card">
         <h2>🏁 Grand final — November 29</h2>
