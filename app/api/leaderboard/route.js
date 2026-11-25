@@ -46,7 +46,7 @@ export async function GET() {
       steps: team.steps,
       members: [...team.members.values()].sort((a, b) => b.points - a.points),
     }))
-    .sort((a, b) => b.points - a.points);
+    .sort((a, b) => b.points - a.points || b.steps - a.steps);
 
   return Response.json({ standings });
 }

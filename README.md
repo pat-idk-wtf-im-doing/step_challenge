@@ -28,7 +28,7 @@ Scoring lives in [lib/scoring.js](lib/scoring.js); all dates/teams are in [lib/c
 
 ## Pages
 
-- `/` — team leaderboard (totals, sorted)
+- `/` — team leaderboard (sorted by total points; ties broken by total steps)
 - `/matrix` — daily step matrix (users × dates) with steps + point equivalent and Monday/finale multiplier badges
 - `/entry` — form to log/overwrite a day's steps
 
