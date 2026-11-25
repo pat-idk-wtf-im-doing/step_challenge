@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { REST_DAYS, restDaysLabel } from '@/lib/challenge';
 import { funDistance } from '@/lib/distance';
+import Countdown from './Countdown';
 
 export default function Leaderboard() {
   const [standings, setStandings] = useState(null);
@@ -23,6 +24,7 @@ export default function Leaderboard() {
         {REST_DAYS.size > 0 && `${restDaysLabel()} rest days · `}
         Nov 29 triple finale
       </p>
+      <Countdown />
       <img src="/app_image.jpg" alt="Fall Into Fitness Team Step Challenge" className="hero-image" />
 
       {error && <div className="msg err">{error}</div>}

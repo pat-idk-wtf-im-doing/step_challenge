@@ -2,6 +2,20 @@
 
 A mobile-friendly web app to track daily steps for a friends' step challenge, auto-calculating points and team standings. Built with Next.js (App Router) and Vercel Postgres.
 
+## Stack
+
+- **API**: Next.js Route Handlers + `@vercel/postgres` + PostgreSQL
+- **GUI**: Next.js 15 (App Router) + React 18 + JavaScript (JSX) + plain CSS
+- **Auth**: None (shared link; entry form is open to the group)
+- **Infra**: Vercel + Vercel Postgres
+- **Tooling**: Node.js 20.6+ scripts (`npm run db:init`); Python script for avatar crops ([scripts/crop-heads.py](scripts/crop-heads.py))
+
+## Copilot Instructions
+
+This repo includes GitHub Copilot instructions so AI-assisted changes follow the project's conventions:
+
+- [`.github/copilot-instructions.md`](.github/copilot-instructions.md) — global conventions: stack, sources of truth (`lib/challenge.js`, `lib/scoring.js`), date/timezone handling, API and UI patterns, validation
+
 ## Challenge rules
 
 - **Window:** Oct 30 – Nov 29, 2026
@@ -28,7 +42,7 @@ Scoring lives in [lib/scoring.js](lib/scoring.js); all dates/teams are in [lib/c
 
 ## Pages
 
-- `/` — team leaderboard (sorted by total points; ties broken by total steps)
+- `/` — team leaderboard (sorted by total points; ties broken by total steps) with a countdown banner to the Nov 29 finale
 - `/matrix` — daily step matrix (users × dates) with steps + point equivalent and Monday/finale multiplier badges
 - `/entry` — form to log/overwrite a day's steps
 
@@ -36,9 +50,12 @@ Scoring lives in [lib/scoring.js](lib/scoring.js); all dates/teams are in [lib/c
 
 ```
 .
+├─ .github/
+│  └─ copilot-instructions.md  # Copilot conventions
 ├─ app/
 │  ├─ layout.jsx, globals.css
 │  ├─ page.jsx                 # leaderboard
+│  ├─ Countdown.jsx            # final-stretch countdown banner
 │  ├─ matrix/page.jsx          # daily step matrix
 │  ├─ entry/page.jsx           # step entry (PIN-protected)
 │  └─ api/
